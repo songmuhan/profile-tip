@@ -62,7 +62,7 @@ function setup_chipyard(){
     # replace boom with mine
     git config --global --add safe.directory /tip/chipyard
     rm -rf $work_dir/chipyard/generators/boom
-    git clone  $work_dir/chipyard/generators/boom
+    git clone $boom_repo $work_dir/chipyard/generators/boom
     cd $work_dir/chipyard/generators/boom
 
     $conda env list
@@ -82,7 +82,6 @@ function setup_utils() {
 
    echo 'export PATH="/tip/miniforge3/bin:$PATH"'>> /root/.bashrc
    echo '. /usr/share/autojump/autojump.sh' >> /root/.bashrc
-   
 }
 
 function setup_git_info() {
