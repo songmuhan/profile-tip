@@ -70,6 +70,15 @@ function setup_chipyard(){
     $conda env list
 }
 
+function setup_pk(){
+    git clone https://github.com/riscv-software-src/riscv-pk.git /tmp/riscv-pk
+    mkdir build && cd build
+    ../configure --prefix=$RISCV --host=riscv64-unknown-elf
+    make -j
+    make install -j
+}
+
+
 function test_all_env() {
     cd $work_dir/chipyard/sims/verilator
     # run qsort to make sure all environment is ready
@@ -92,6 +101,7 @@ setup_workdir
 setup_miniforge3
 setup_conda
 setup_chipyard
+setup_pk
 test_all_env
 setup_utils
 setup_git_info
