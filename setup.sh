@@ -73,7 +73,7 @@ function setup_chipyard(){
 function test_all_env() {
     cd $work_dir/chipyard/sims/verilator
     # run qsort to make sure all environment is ready
-    make CONFIG=MediumBoomConfig run-binary -j BINARY=$benchmarks/qsort.riscv LOADMEM=1 
+    make -j CONFIG=MediumBoomConfig run-binary BINARY=$benchmarks/qsort.riscv LOADMEM=1 
 }
 
 function setup_utils() {
