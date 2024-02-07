@@ -85,8 +85,8 @@ function setup_utils() {
 }
 
 function setup_git_info() {
-    git config --global user.name "Muhan Song"
-    git config --global user.email songmuhan99@gmail.com
+    sudo git config --global user.name "Muhan Song"
+    sudo git config --global user.email songmuhan99@gmail.com 
 }
 
 
