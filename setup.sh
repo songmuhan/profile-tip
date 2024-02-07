@@ -79,6 +79,9 @@ function test_all_env() {
 function setup_utils() {
    sudo apt-get update
    sudo apt-get --yes install neovim tmux htop autojump
+   
+   sudo sh -c 'echo "export PATH=\"/tip/miniforge3/bin:\$PATH\"" >> /root/.bashrc'
+   sudo sh -c 'echo ". /usr/share/autojump/autojump.sh" >> /root/.bashrc'
 }
 
 function setup_git_info() {
