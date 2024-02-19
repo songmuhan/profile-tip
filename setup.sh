@@ -88,8 +88,17 @@ function setup_utils() {
 }
 
 function setup_git_info() {
-    sudo git config --global user.name "Muhan Song"
-    sudo git config --global user.email songmuhan99@gmail.com 
+    # directly write the following content into /root/.gitconfig
+    sudo tee /root/.gitconfig > /dev/null << 'EOF'
+[safe]
+        directory = /tip/chipyard/generators/boom
+[user]
+        name = Muhan Song
+        email = songmuhan99@gmail.com
+[credential]
+        helper = cache
+EOF
+
 }
 
 
