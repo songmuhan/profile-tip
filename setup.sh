@@ -80,9 +80,11 @@ function test_all_env() {
 function setup_utils() {
    sudo apt-get update
    sudo apt-get --yes install neovim tmux htop autojump ripgrep
-   
-   sudo sh -c 'echo "export PATH=\"/tip/miniforge3/bin:\$PATH\"" >> /root/.bashrc'
-   sudo sh -c 'echo ". /usr/share/autojump/autojump.sh" >> /root/.bashrc'
+   # conda env, autojump, set default editor to nvim
+   sudo sh -c 'echo "export PATH=\"/tip/miniforge3/bin:\$PATH\"" >> /root/.bashrc && \
+   echo ". /usr/share/autojump/autojump.sh" >> /root/.bashrc && \
+   echo "export VISUAL=nvim" >> /root/.bashrc && \
+   echo "export EDITOR=\"\$VISUAL\"" >> /root/.bashrc'
 }
 
 function setup_git_info() {
