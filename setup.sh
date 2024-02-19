@@ -64,6 +64,7 @@ function setup_chipyard(){
     rm -rf $work_dir/chipyard/generators/boom
     git clone $boom_repo $work_dir/chipyard/generators/boom
     cd $work_dir/chipyard/generators/boom
+    git switch dev
 
     $conda env list
     source $work_dir/chipyard/env.sh
