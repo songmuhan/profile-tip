@@ -19,7 +19,7 @@ request = pc.makeRequestRSpec()
  
 # Add a raw PC to the request.
 node = request.RawPC('node-0')
-node.hardware_type = 'c220g1'
+node.hardware_type = 'r320'
 node.disk_image="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"
 
 # Install and execute a script that is contained in the repository.
