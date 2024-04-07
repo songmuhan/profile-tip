@@ -116,7 +116,5 @@ setup_workdir
 setup_miniforge3
 setup_conda
 setup_chipyard
-test_all_env
 setup_utils
 setup_git_info
-setup_pk
