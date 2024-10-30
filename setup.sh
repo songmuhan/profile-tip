@@ -101,6 +101,25 @@ EOF
 
 }
 
+function add_conda_initialize() {
+    sudo tee -a /root/.bashrc > /dev/null << 'EOF'
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/tip/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/tip/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/tip/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/tip/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+EOF
+}
+
 
 function setup_pk(){
     git clone https://github.com/riscv-software-src/riscv-pk.git /tmp/riscv-pk
@@ -135,3 +154,4 @@ setup_utils
 setup_git_info
 add_tea_required_tlb_fileds
 test_all_env
+add_conda_initialize
