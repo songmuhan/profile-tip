@@ -110,6 +110,21 @@ function setup_pk(){
     make install -j
 }
 
+function add_tea_required_tlb_fileds(){
+    # TEA need add some fileds in tlb, which is in rocket-chip
+    # refer this commit:
+    # https://github.com/EECS-NTNU/rocket-chip/commit/a6540f0472c141f4636ef31374f9266908ffccd0
+    tlb_file=/tip/chipyard/generators/rocket-chip/src/main/scala/rocket/TLB.scala
+    sed -i '89i\
+    val tlb_miss = Bool()\
+    val ptw_fired = Bool()\
+    ' $tlb_file
+    sed -i '651i\
+    io.resp.tlb_miss := usingVM.B && tlb_miss\
+    io.resp.ptw_fired := usingVM.B && io.req.fire && tlb_miss\
+    ' $tlb_file
+}
+
  
 
 setup_workdir
@@ -118,3 +133,5 @@ setup_conda
 setup_chipyard
 setup_utils
 setup_git_info
+add_tea_required_tlb_fileds
+test_all_env
