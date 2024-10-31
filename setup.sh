@@ -65,7 +65,9 @@ function setup_chipyard(){
     git clone $boom_repo $work_dir/chipyard/generators/boom
     cd $work_dir/chipyard/generators/boom
     git switch deg
-
+    
+    sudo chmod a+rw **/*.scala
+    
     $conda env list
     source $work_dir/chipyard/env.sh
     $conda env list
