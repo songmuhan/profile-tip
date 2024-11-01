@@ -66,8 +66,6 @@ function setup_chipyard(){
     cd $work_dir/chipyard/generators/boom
     git switch deg
     
-    sudo chmod a+rw **/*.scala
-    
     $conda env list
     source $work_dir/chipyard/env.sh
     $conda env list
@@ -146,7 +144,10 @@ function add_tea_required_tlb_fileds(){
     ' $tlb_file
 }
 
- 
+function chmod_boom_scala(){
+
+    sudo chmod a+rw /tip/chipyard/generators/boom/src/main/scala/**/*.scala
+}
 
 setup_workdir
 setup_miniforge3
@@ -157,3 +158,4 @@ setup_git_info
 add_tea_required_tlb_fileds
 test_all_env
 add_conda_initialize
+chmod_boom_scala
